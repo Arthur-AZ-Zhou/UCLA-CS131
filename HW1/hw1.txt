@@ -23,4 +23,20 @@ contain itself then it should be in the set S but the fact that it is in
 set S is a contradition. Due to this paradox OCaml doesn't allow sets that 
 contains themselves.
 
-6. 
+6. I simply checked if (f x) = x and if it doesn't we run the recursion 
+and do computed_fixed_point eq f (f x). I don't actually have a way to stop
+infinite loops but the assignment did say my implementation can do whatever
+it wants in that case so...
+
+7. Wrote 4 if cases. The 2 base cases include if the period is 0 we return x,
+if period is 1 we computed_fixed_point. The other two cases keep iterating
+and lowering the value of p until it reaches one of the base cases. We run
+the helper to save time and space in our main function.
+
+8. We create an escape condition where if p x = false then we return an 
+empty list. We then recurse through whileseq s p (s x) while appending x to
+the front of it. This returns us a list at the very end that contains all
+elements such that p is true for.
+
+9. 
+

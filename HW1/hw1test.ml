@@ -1,40 +1,42 @@
+(*Part 1 Test*)
 let subset_test0 = subset [] [1;2;3]
 let subset_test1 = subset [3;1;3] [1;2;3]
 let subset_test2 = not (subset [1;3;7] [4;1;3])
-let subset_test3 = subset [] []
+let my_subset_test0 = subset [] []
 
+(*Part 2 Test*)
 let equal_sets_test0 = equal_sets [1;3] [3;1;3]
 let equal_sets_test1 = not (equal_sets [1;3;4] [3;1;3])
-let equal_sets_test2 = equal_sets [1; 2; 3] [3; 2; 1]
+let my_equal_sets_test0 = equal_sets [1; 2; 3] [3; 2; 1]
 
+(*Part 3 Test*)
 let set_union_test0 = equal_sets (set_union [] [1;2;3]) [1;2;3]
 let set_union_test1 = equal_sets (set_union [3;1;3] [1;2;3]) [1;2;3]
 let set_union_test2 = equal_sets (set_union [] []) []
-let set_union_test3 = equal_sets (set_union [1; 2; 3] [4; 5; 6]) [1; 2; 3; 4; 5; 6]
+let my_set_union_test0 = equal_sets (set_union [1; 2; 3] [4; 5; 6]) [1; 2; 3; 4; 5; 6]
 
+(*Part 4 Test*)
 let set_all_union_test0 = equal_sets (set_all_union []) []
 let set_all_union_test1 = equal_sets (set_all_union [[3;1;3]; [4]; [1;2;3]]) [1;2;3;4]
 let set_all_union_test2 = equal_sets (set_all_union [[5;2]; []; [5;2]; [3;5;7]]) [2;3;5;7]
-let set_all_union_test3 = not (equal_sets (set_all_union [[1; 2; 3; 5]]) [1; 2; 3; 4])
+let my_set_all_union_test0 = not (equal_sets (set_all_union [[1; 2; 3; 5]]) [1; 2; 3; 4])
 
 (*No test case for part 5*)
 
-(* let computed_fixed_point_test0 =
-  computed_fixed_point (=) (fun x -> x / 2) 1000000000 = 0
-let computed_fixed_point_test1 =
-  computed_fixed_point (=) (fun x -> x *. 2.) 1. = infinity
-let computed_fixed_point_test2 =
-  computed_fixed_point (=) sqrt 10. = 1.
-let computed_fixed_point_test3 =
-  ((computed_fixed_point (fun x y -> abs_float (x -. y) < 1.)
-			 (fun x -> x /. 2.)
-			 10.)
-   = 1.25)
+(*Part 6 Test*)
+let computed_fixed_point_test0 = computed_fixed_point (=) (fun x -> x / 2) 1000000000 = 0
+let computed_fixed_point_test1 = computed_fixed_point (=) (fun x -> x *. 2.) 1. = infinity
+let computed_fixed_point_test2 = computed_fixed_point (=) sqrt 10. = 1.
+let computed_fixed_point_test3 = ((computed_fixed_point (fun x y -> abs_float (x -. y) < 1.) (fun x -> x /. 2.) 10.) = 1.25)
+let my_computed_fixed_point_test0 = not (computed_fixed_point (<) (fun x -> x / 2) 1000000000 = 0)
 
-let computed_periodic_point_test0 =
-  computed_periodic_point (=) (fun x -> x / 2) 0 (-1) = -1
-let computed_periodic_point_test1 =
-  computed_periodic_point (=) (fun x -> x *. x -. 1.) 2 0.5 = -1.
+(*Part 7 Test*)
+let computed_periodic_point_test0 = computed_periodic_point (=) (fun x -> x / 2) 0 (-1) = -1
+let computed_periodic_point_test1 = computed_periodic_point (=) (fun x -> x *. x -. 1.) 2 0.5 = -1.
+let my_computed_periodic_point_test0 = computed_periodic_point (=) (fun x -> x *. 2.) 2 0.5 = infinity
+
+(*Part 8 Test*)
+let my_whileseq_test0 = equal_sets (whileseq ((+) 3) ((>) 10) 0) [0; 3; 6; 9]
 
 (* An example grammar for a small subset of Awk.  *)
 
@@ -127,4 +129,4 @@ let giant_test2 =
   filter_blind_alleys (Sentence, List.tl (List.tl (snd giant_grammar))) =
     (Sentence,
      [Grunt, [T "khrgh"]; Shout, [T "aooogah!"];
-      Sentence, [N Grunt]; Sentence, [N Shout]]) *)
+      Sentence, [N Grunt]; Sentence, [N Shout]])
